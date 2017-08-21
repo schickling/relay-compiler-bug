@@ -1,0 +1,10 @@
+{
+  "name": "relay-bug",
+  "version": "0.0.0",
+  "scripts": {
+    "relay": "relay-compiler --src ./src --schema ./schema.graphql"
+  },
+  "dependencies": {
+    "relay-compiler": "^1.2.0"
+  }
+}

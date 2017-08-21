@@ -1,0 +1,47 @@
+type Query {
+  viewer: Viewer!
+}
+
+type Mutation {
+  createTest(input: CreateTestInput!): CreateTestPayload
+}
+
+interface Node {
+  # The id of the object.
+  id: ID!
+}
+
+input CreateTestInput {
+  testField: String!
+  test: CreateTestInput
+  clientMutationId: String!
+}
+
+type CreateTestPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  test: Test
+  edge: TestEdge
+}
+
+scalar DateTime
+
+type Test implements Node {
+  id: ID!
+  test: Test
+  testField: String!
+}
+
+# An edge in a connection.
+type TestEdge {
+  # The item at the end of the edge.
+  node: Test!
+
+  # A cursor for use in pagination.
+  cursor: String!
+}
+
+# This is the famous Relay viewer object
+type Viewer {
+  id: ID!
+}
